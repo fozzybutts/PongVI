@@ -18,22 +18,27 @@ public class Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (transform.position.x > 9.4f)
-        {
-            direction.x = (-direction.x);
-        }
-        if (transform.position.y > 4.5f)
+        // Ball Reset Position
+        // gameObject.transform.position = new Vector3(0.52f, -0.51f, 0f);
+      
+        if (transform.position.y > 4.2f)
         {
             direction.y = (-direction.y);
         }
-        if (transform.position.x < -9.4f)
-        {
-            direction.x = (-direction.x);
-        }
-        if (transform.position.y < -4.5f)
+       
+        if (transform.position.y < -5.0f)
         {
             direction.y = (-direction.y);
+        }
+        
+        if (transform.position.x > 10.3f)
+        {
+            gameObject.transform.position = new Vector3(0.52f, -0.51f, 0f);
+        }
+       
+        if (transform.position.x < -9.3f)
+        {
+            gameObject.transform.position = new Vector3(0.52f, -0.51f, 0f);
         }
 
 
