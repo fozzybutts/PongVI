@@ -179,7 +179,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -963447771
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ad14847ba6aa9534393709283eaea8b3, type: 3}
   m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FlipX: 0
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 528880908}
   - component: {fileID: 528880907}
   m_Layer: 0
-  m_Name: LeftPaddle
+  m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 1139926689}
   - component: {fileID: 1139926691}
   m_Layer: 0
-  m_Name: RightPaddle
+  m_Name: Player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -587,6 +587,7 @@ GameObject:
   - component: {fileID: 1426355796}
   - component: {fileID: 1426355795}
   - component: {fileID: 1426355797}
+  - component: {fileID: 1426355799}
   - component: {fileID: 1426355798}
   m_Layer: 0
   m_Name: ShrekBall
@@ -683,7 +684,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1426355794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ff5db469d8ce84e92c8ff8c47f2cb7, type: 3}
+  m_Script: {fileID: 11500000, guid: 0579ab22c37b94a499020d8649d11720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1426355799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426355794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a6c22375d798e4aa67245ce0b20948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807

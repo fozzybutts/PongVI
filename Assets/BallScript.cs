@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Script : MonoBehaviour
+public class BallScript : MonoBehaviour
 {
 
     Vector2 direction = Vector2.right;
