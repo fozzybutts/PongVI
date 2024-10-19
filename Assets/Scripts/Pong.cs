@@ -10,6 +10,9 @@ public class Pong : MonoBehaviour
     BoxCollider2D paddle2Box;
     BoxCollider2D ballBox;
 
+    int scorePaddle1 = 0;
+    int scorePaddle2 = 0;
+
     Vector2 ballDirection = Vector2.right;
 
     void Start()
@@ -79,39 +82,51 @@ public class Pong : MonoBehaviour
         float yMinball = ballY - hhball;
         float yMaxball = ballY + hhball;
 
-        //this line is the problem
-        if (ball.transform.position.x < xMaxP1)
+        //Code for ball colliding with paddles and Reflecting back
+        if (ballX < xMaxP1 && ballX > xMinP1 && ballY < yMaxP1 && ballY > yMinP1)
         {
-            ballDirection.x = -ballDirection.x;
-            ballDirection.y = -ballDirection.y;
+            ballDirection = Vector2.Reflect(ballDirection, Vector2.right);
         }
-        if (ball.transform.position.x > xMinP2)
+        if (ballX < xMaxP2 && ballX > xMinP2 && ballY < yMaxP2 && ballY > yMinP2)
         {
-            ballDirection.x = -ballDirection.x;
-            ballDirection.y = -ballDirection.y;
-        }
-        if (ball.transform.position.x < xMinP1)
-        {
-            ballDirection.x = -ballDirection.x;
-            ballDirection.y = -ballDirection.y;
-        }
-        if (ball.transform.position.x > xMaxP2)
-        {
-            ballDirection.x = -ballDirection.x;
-            ballDirection.y = -ballDirection.y;
-        }
- 
-        //this is to separate the movement script from the bounce script
-        if (ball.transform.position.x > 10.0f || ball.transform.position.x < -10.0f)
-        {
-            ballDirection.x = -ballDirection.x;
-        }
-        if (ball.transform.position.y > 4.5f || ball.transform.position.y < -4.5f)
-        {
-            ballDirection.y = -ballDirection.y;
+            ballDirection = Vector2.Reflect(ballDirection, Vector2.left);
         }
 
+        //scoring system and ball reset 
+
+        if (ballX > 9.3f)
+        {
+            scorePaddle2++;
+            Debug.Log("Paddle 2 Score: " + scorePaddle2);
+            ResetBallPosition();
+        }
+        else if (ballX < -9.3f)
+        {
+            scorePaddle1++;
+            Debug.Log("Paddle 1 Score: " + scorePaddle1);
+            ResetBallPosition();
+        }
+        else
+        {
+            if (ballX > 10.0f || ballX < -10.0f)
+            {
+                ballDirection.x = -ballDirection.x;
+            }
+
+            if (ballY > 4.5f || ballY < -4.5f)
+            {
+                ballDirection.y = -ballDirection.y;
+            }
+
+        }
         Vector3 ballChange = ballDirection * ballSpeed * dt;
         ball.transform.position += ballChange;
+
+    void ResetBallPosition()
+    {
+        ball.transform.position = new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(-3.0f, 3.0f), 0f);
+        float angle = Random.Range(0.0f, 360.0f) * Mathf.Deg2Rad;
+        ballDirection = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+    }
     }
 }
